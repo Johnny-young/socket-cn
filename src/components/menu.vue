@@ -12,35 +12,35 @@
         menus: [
           {
             path: "Introduction",
-            name: "Introduction"
+            name: "介绍"
           },
           {
             path: "The-web-framework",
-            name: "The web framework"
+            name: "web框架"
           },
           {
             path: "Serving-HTML",
-            name: "Serving HTML"
+            name: "发送HTML页面"
           },
           {
             path: "Integrating-Socket.IO",
-            name: "Integrating Socket.IO"
+            name: "整合Socket.IO"
           },
           {
-            path: "Emmitting-events",
-            name: "Emmitting events"
+            path: "Emitting-events",
+            name: "触发事件"
           },
           {
             path: "Broadcasting",
-            name: "Broadcasting"
+            name: "广播"
           },
           {
             path: "Homework",
-            name: "Homework"
+            name: "家庭作业"
           },
           {
             path: "Getting-this-example",
-            name: "Getting this example"
+            name: "获取这个案例"
           }
         ]
       }
