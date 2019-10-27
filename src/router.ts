@@ -8,7 +8,7 @@ Vue.use(Router)
 const started = () => import("./pages/started/index")
 const chat = () => import("./pages/started/chat.vue")
 
-const docs = () => import("./pages/docs/overview/index.vue")
+const docs = () => import("./pages/docs/index.vue")
 
 const demo = () => import("./pages/demo.vue")
 

@@ -6,7 +6,8 @@
   "author": "young",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --env.production=false --config ./webpack.config.js --watch --color"
+    "dev": "webpack-dev-server --env.production=false --config ./webpack.config.js --watch --color",
+    "build": "webpack --env.production --config"
   },
   "dependencies": {
     "@types/vue": "^2.0.0",

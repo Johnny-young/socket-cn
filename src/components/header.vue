@@ -7,7 +7,7 @@
     </div>
     <div class="right">
       <div class="learn">
-        <span class="txt">Learn</span>
+        <span class="txt">学习</span>
         <ul class="list">
           <li v-for="link in learnLinks" :key="link.name">
             <Router-link :to="link.url">{{link.name}}</Router-link>
@@ -15,13 +15,13 @@
         </ul>
       </div>
       <div class="resources">
-        <span class="txt">Resources</span>
+        <span class="txt">资源</span>
         <ul class="list">
           <li v-for="link in resourcesLinks" :key="link.title">
             <div class="link-title">{{link.title}}</div>
             <div class="inner-list">
               <div v-for="innerLink in link.children" :key="innerLink.url">
-                <a :href="innerLink.url" :title="innerLink.name">{{innerLink.name}}</a>
+                <a :href="innerLink.url" :title="innerLink.name" target="_blank">{{innerLink.name}}</a>
               </div>
             </div>
           </li>
@@ -32,7 +32,7 @@
         href="https://opencollective.com/socketio"
         target="_blank"
         :style="{margin: '0 10px'}"
-      >Support Socket I.O</a>
+      >支持 Socket I.O</a>
     </div>
   </header>
 </template>
@@ -44,29 +44,29 @@ export default {
     return {
       learnLinks: [
         {
-          name: "Get started",
+          name: "开始学习",
           url: "/get-started/chat/"
         },
         {
-          name: "Doucmentation",
+          name: "文档",
           url: "/docs/"
         },
         {
-          name: "Demos",
+          name: "案例",
           url: "/demos/chat/"
         },
         {
-          name: "Server API",
+          name: "服务端API",
           url: "/docs/server-api/"
         },
         {
-          name: "Client API",
+          name: "客户端API",
           url: "/docs/client-api/"
         }
       ],
       resourcesLinks: [
         {
-          title: "Getting help",
+          title: "获取帮助",
           children: [
             {
               name: "Slack",
@@ -79,7 +79,7 @@ export default {
           ]
         },
         {
-          title: "News",
+          title: "新闻",
           children: [
             {
               name: "Blog",
@@ -92,7 +92,7 @@ export default {
           ]
         },
         {
-          title: "Links",
+          title: "链接",
           children: [
             {
               name: "Github",
@@ -169,6 +169,8 @@ export default {
           display: inline-block;
           margin-top: 10px;
           line-height: 20px;
+          min-width: 56px;
+          width: 100%;
           font-size: 12px;
           color: #9b9b9b;
         }
