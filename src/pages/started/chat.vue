@@ -224,7 +224,7 @@
 
 <script lang="ts">
   import header from '@/src/components/header'
-  import menu from "@/src/components/menu"
+  import menu from "./menu"
 
   export default {
     name: "chat",

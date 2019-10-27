@@ -6,10 +6,12 @@ import index from "./pages/index"
 Vue.use(Router)
 
 const started = () => import("./pages/started/index")
+const chat = () => import("./pages/started/chat.vue")
+
+const docs = () => import("./pages/docs/overview/index.vue")
 
 const demo = () => import("./pages/demo.vue")
 
-const chat = () => import("./pages/started/chat.vue")
 
 export default new Router({
   mode: "history", // 卧槽，你个SB，耽误我好长时间
@@ -25,6 +27,10 @@ export default new Router({
     {
       path: "/get-started/chat",
       component: chat
+    },
+    {
+      path: "/docs/",
+      component: docs
     },
     {
       path: "/demo/",
