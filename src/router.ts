@@ -9,6 +9,7 @@ const started = () => import("./pages/started/index")
 const chat = () => import("./pages/started/chat.vue")
 
 const docs = () => import("./pages/docs/index.vue")
+const overview = () => import("./pages/docs/overview")
 
 const demo = () => import("./pages/demo.vue")
 
@@ -30,7 +31,13 @@ export default new Router({
     },
     {
       path: "/docs/",
-      component: docs
+      component: docs,
+      children: [
+        {
+          path: "/",
+          component: overview
+        }
+      ]
     },
     {
       path: "/demo/",

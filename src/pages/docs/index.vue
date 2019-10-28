@@ -22,7 +22,7 @@ export default {
       menuData: [
           {
             key: "Overview",
-            path: "Overview",
+            path: "",
             name: "概述",
             level: 1,
             children: [

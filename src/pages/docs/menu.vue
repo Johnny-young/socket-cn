@@ -1,7 +1,7 @@
 <template>
   <ul :class="data[0].level === 1 ? 'menu' : 'sub-menu'">
     <menu-item v-for="(item, index) in data" :class="currIndex === index ? 'active' : ''" :key="item.name">
-      <span @click="jumpHashTitlte(item.path)" class="txt" v-if="!item.children" :title="item.name" :id="item.path">{{item.name}}</span>
+      <a  :href="'#' + item.path" class="txt" v-if="!item.children" :title="item.name">{{item.name}}</a>
       <template v-else>
         <h2 @click="data[0].level === 1 && toggleMenu(index, item.path)" :class="data[0].level === 1 ? 'title' : 'inner-title'" :title="item.name">{{item.name}}</h2>
         <my-menu :data="item.children"></my-menu>
@@ -21,19 +21,21 @@
     },
     data() {
       return {
-        currIndex: 0
+        currIndex: 0,
       }
     },
     methods: {
       // 菜单切换
       toggleMenu: function(index, path) {
         this.currIndex = index
-        this.$router.push(path)
+        !this.$route.path.includes(path) && this.$router.push("/docs/" + path)
       },
       //页面内容跳转
       jumpHashTitlte: function(id) {
+        !this.$route.path.includes(id) 
+        && 
         this.$router.push({
-          path: "#" + id
+          path: "/#" + id
         })
       }
     },
