@@ -1,29 +1,40 @@
 <template>
-  <ul class="menu">
-    <menuitem v-for="item in data" :key="item.name">
-      <h2>{{item.name}}</h2>
-      <menu v-if="item.children && item.children.length" :data="item.children"></menu>
-    </menuitem>
+  <ul :class="data[0].level === 1 ? 'menu' : 'sub-menu'">
+    <menu-item v-for="(item, index) in data" :class="currIndex === index ? 'active' : ''" :key="item.name">
+      <span @click="jumpHashTitlte(item.path)" class="txt" v-if="!item.children" :title="item.name" :id="item.path">{{item.name}}</span>
+      <template v-else>
+        <h2 @click="data[0].level === 1 && toggleMenu(index, item.path)" :class="data[0].level === 1 ? 'title' : 'inner-title'" :title="item.name">{{item.name}}</h2>
+        <my-menu :data="item.children"></my-menu>
+      </template>
+    </menu-item>
   </ul>
 </template>
 
 <script lang="ts">
   import menuItem from "./menuItem"
-import func from '../../../vue-temp/vue-editor-bridge'
+
   export default {
-    name: "Menu",
-    props: ["data"],
+    name: "my-menu",
+    props: ['data'],
     components: {
-      "menuitem": menuItem
+      "menu-item": menuItem
     },
     data() {
       return {
-        
+        currIndex: 0
       }
     },
     methods: {
-      buildMenu: function() {
-
+      // 菜单切换
+      toggleMenu: function(index, path) {
+        this.currIndex = index
+        this.$router.push(path)
+      },
+      //页面内容跳转
+      jumpHashTitlte: function(id) {
+        this.$router.push({
+          path: "#" + id
+        })
       }
     },
     created: function() {
@@ -37,13 +48,45 @@ import func from '../../../vue-temp/vue-editor-bridge'
 
 <style lang="scss" scoped>
   .menu {
-    position: fixed;
-    top: 80px;
-    left: 0;
+    width: 100%;
     height: 100%;
-    padding: 0 20px 20px 60px;
-    width: 200px;
-    overflow-x: hidden;
     overflow-y: auto;
+    .item {
+      &.active {
+        h2 {
+          font-weight: bold;
+        }
+        .sub-menu {
+          display: block;
+          .inner-title {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .txt {
+        display: inline-block;
+        width: 100%;
+        line-height: 26px;
+        cursor: pointer;
+      }
+    }
+    .title {
+      line-height: 26px;
+      font-size: 14px;
+      font-weight: normal;
+      cursor: pointer;
+    }
+    .sub-menu {
+      display: none;
+      padding-left: 10px;
+      font-size: 12px;
+      .inner-title {
+        line-height: 26px;
+        font-size: 12px;
+        font-weight: normal;
+        cursor: pointer;
+      }
+    }
   }
 </style>
