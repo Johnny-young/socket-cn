@@ -4,6 +4,9 @@
     <div class="menu-wrapper">
       <my-menu :data="menuData"></my-menu>
     </div>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -383,6 +386,10 @@ export default {
     width: 200px;
     color: #9b9b9b;
     overflow: hidden;
+  }
+  .content {
+    margin-left: 320px;
+    margin-right: 240px;
   }
 }
 </style>

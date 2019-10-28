@@ -1,11 +1,9 @@
 <template>
   <ul :class="data[0].level === 1 ? 'menu' : 'sub-menu'">
     <menu-item v-for="(item, index) in data" :class="currIndex === index ? 'active' : ''" :key="item.name">
-      <a  :href="'#' + item.path" class="txt" v-if="!item.children" :title="item.name">{{item.name}}</a>
-      <template v-else>
-        <h2 @click="data[0].level === 1 && toggleMenu(index, item.path)" :class="data[0].level === 1 ? 'title' : 'inner-title'" :title="item.name">{{item.name}}</h2>
-        <my-menu :data="item.children"></my-menu>
-      </template>
+      <a :href="'#' + item.path" class="txt" v-if="!item.children && item.level !== 1" :title="item.name">{{item.name}}</a>
+      <h2 v-else @click="data[0].level === 1 && toggleMenu(index, item.path)" :class="data[0].level === 1 ? 'title' : 'inner-title'" :title="item.name">{{item.name}}</h2>
+      <my-menu v-if="item.children && item.children.length" :data="item.children"></my-menu>
     </menu-item>
   </ul>
 </template>
@@ -22,13 +20,43 @@
     data() {
       return {
         currIndex: 0,
+        menu: [
+          'Rooms-and-Namespaces',
+          'Migrating-from-0.9',
+          'Using-multiple-nodes',
+          'Logging-and-debugging',
+          'Emit-cheatsheet',
+          'Intervals-overview',
+          'FAQ'
+        ]
       }
     },
     methods: {
+      getCurrIndex: function() {
+        let index = null
+        this.menu.find((item, inx) => {
+          if(this.$route.path.includes(item)) {
+            index = inx + 1
+          }
+          return false
+        })
+
+        if(index) {
+          this.currIndex = index
+        }else {
+          let arr = this.$route.path.split("/")
+          if(arr[arr.length-1] === '' && arr[arr.length-2] === 'docs') {
+            this.currIndex = 0
+          }
+        }
+
+      },
       // 菜单切换
       toggleMenu: function(index, path) {
         this.currIndex = index
-        !this.$route.path.includes(path) && this.$router.push("/docs/" + path)
+        let arr = this.$route.path.split("/")
+        
+        arr[arr.length-1] !== path && this.$router.push("/docs/" + path)
       },
       //页面内容跳转
       jumpHashTitlte: function(id) {
@@ -40,7 +68,7 @@
       }
     },
     created: function() {
-      
+      this.getCurrIndex()
     },
     mounted: function() {
       

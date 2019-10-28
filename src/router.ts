@@ -37,7 +37,7 @@ export default new Router({
       component: chat
     },
     {
-      path: "/docs",
+      path: "/docs/",
       component: docs,
       children: [
         {
@@ -45,31 +45,31 @@ export default new Router({
           component: overview
         },
         {
-          path: "/Rooms-and-Namespaces/",
+          path: "Rooms-and-Namespaces/",
           component: roomsAndNamespaces
         },
         {
-          path: "/Migrating-from-0.9/",
+          path: "Migrating-from-0.9/",
           component: migrating
         },
         {
-          path: "/Using-multiple-nodes/",
+          path: "Using-multiple-nodes/",
           component: usingMultipleNodes
         },
         {
-          path: "/Logging-and-debugging",
+          path: "Logging-and-debugging/",
           component: loggingAndDebugging
         },
         {
-          path: "/Emit-cheatsheet",
+          path: "Emit-cheatsheet/",
           component: emitAndDebugging
         },
         {
-          path: "/Intervals-overview",
+          path: "Intervals-overview/",
           component: internalsOverview
         },
         {
-          path: "/FAQ",
+          path: "FAQ/",
           component: faq
         }
       ]
