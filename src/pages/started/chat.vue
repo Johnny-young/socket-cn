@@ -1,5 +1,5 @@
 <template>
-  <div class="chat">
+  <div class="body">
     <my-header></my-header>
     <my-menu></my-menu>
     <div class="content">
@@ -236,51 +236,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .chat {
-    margin-left: 320px;
-    margin-right: 240px;
-
-    p {
-      margin: 16px 0;
-      
-      font-size: 16px;
-    }
-
-    h2 {
-      margin-top: 30px;
-      line-height: 1.6;
-      font-size: 26px;
-    }
-
-    .code {
-      margin: 0 -20px;
-      padding: 15px 20px;
-      line-height: 22px;
-      color: #ccc;
-      border: 1px solid #ddd;
-      background-color: #2d2d2d;
-      overflow: auto;
-    }
-
-    code {
-      margin: 0 5px;
-      padding: 0 5px;
-      background-color: #eee;
-      text-shadow: 0 1px #fff;
-    }
-
-    ul {
-      padding-left: 40px;
-
-      li {
-        margin-top: 10px;
-      }
-    }
-
-    img {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%;
-    }
-  }
+  
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="docs">
+  <div class="body">
     <my-header></my-header>
-    <div class="menu-wrapper">
+    <div class="menu">
       <my-menu :data="menuData"></my-menu>
     </div>
     <div class="content">
@@ -386,10 +386,6 @@ export default {
     width: 200px;
     color: #9b9b9b;
     overflow: hidden;
-  }
-  .content {
-    margin-left: 320px;
-    margin-right: 240px;
   }
 }
 </style>

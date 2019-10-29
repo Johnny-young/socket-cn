@@ -1,5 +1,5 @@
 <template>
-  <ul :class="data[0].level === 1 ? 'menu' : 'sub-menu'">
+  <ul :class="data[0].level === 1 ? 'inner-menu' : 'inner-sub-menu'">
     <menu-item v-for="(item, index) in data" :class="currIndex === index ? 'active' : ''" :key="item.name">
       <a :href="'#' + item.path" class="txt" v-if="!item.children && item.level !== 1" :title="item.name">{{item.name}}</a>
       <h2 v-else @click="data[0].level === 1 && toggleMenu(index, item.path)" :class="data[0].level === 1 ? 'title' : 'inner-title'" :title="item.name">{{item.name}}</h2>
@@ -56,7 +56,7 @@
         this.currIndex = index
         let arr = this.$route.path.split("/")
         
-        arr[arr.length-1] !== path && this.$router.push("/docs/" + path)
+        arr[arr.length-1] !== path && this.$router.push("/docs/" + path + "/")
       },
       //页面内容跳转
       jumpHashTitlte: function(id) {
@@ -77,7 +77,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .menu {
+  .inner-menu {
     width: 100%;
     height: 100%;
     overflow-y: auto;
@@ -86,7 +86,7 @@
         h2 {
           font-weight: bold;
         }
-        .sub-menu {
+        .inner-sub-menu {
           display: block;
           .inner-title {
             font-weight: bold;
@@ -107,7 +107,7 @@
       font-weight: normal;
       cursor: pointer;
     }
-    .sub-menu {
+    .inner-sub-menu {
       display: none;
       padding-left: 10px;
       font-size: 12px;

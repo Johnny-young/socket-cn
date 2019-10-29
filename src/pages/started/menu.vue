@@ -56,21 +56,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .menu {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    height: 100%;
-    padding: 0 20px 20px 60px;
-    width: 200px;
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    a {
-      display: block;
-      line-height: 26px;
-      color: #9b9b9b;
-      font-size: 12px;
-    }
-  }
+  
 </style>
