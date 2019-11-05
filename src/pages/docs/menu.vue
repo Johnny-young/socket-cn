@@ -56,7 +56,7 @@
         this.currIndex = index
         let arr = this.$route.path.split("/")
         
-        arr[arr.length-1] !== path && this.$router.push("/docs/" + path + "/")
+        arr[arr.length-2] !== path && this.$router.push(path ? "/docs/" + path + "/" : "/docs/")
       },
       //页面内容跳转
       jumpHashTitlte: function(id) {
